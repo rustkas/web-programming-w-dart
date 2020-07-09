@@ -59,6 +59,7 @@ void main() {
     var compare = (Map<String, Object> a, Map<String, Object> b) =>
         (a['name'] as Comparable).compareTo(b['name']);
     apps.sort(compare);
+
     apps.forEach((a) => print(a['name']));
   }
 }
