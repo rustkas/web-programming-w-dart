@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 
 void main() {
-  group('Working with the List Class ->', () {
+  group('Working with the List Class →', () {
     test('new List()', () {
       var empty_list = [];
 
@@ -20,7 +20,7 @@ void main() {
     expect(empty_list, [null, null]);
   });
 
-  group('create a list of fixed size ->', () {
+  group('create a list of fixed size →', () {
     test('list of numbers', () {
       final my_filled_list_num = List.filled(3, 0);
       expect(my_filled_list_num, [0, 0, 0]);
@@ -34,7 +34,7 @@ void main() {
       expect(my_filled_list_map, [{}, {}, {}]);
     });
   });
-  group('create list from another list ->', () {
+  group('create list from another list →', () {
     List<String> my_filled_list_str;
     setUp(() {
       my_filled_list_str = List.filled(3, 'A');
@@ -51,7 +51,7 @@ void main() {
       expect(my_list_from_another, ['A', 'A', 'A', 'B']);
     });
   });
-  group('using the List.generate constructor ->', () {
+  group('using the List.generate constructor →', () {
     List<String> other_list;
     setUp(() {
       other_list = ['/etc/', '/home/pi/'];
@@ -75,7 +75,7 @@ void main() {
     });
   });
 
-  group('other methods for working with lists ->', () {
+  group('other methods for working with lists →', () {
     List<int> my_list;
     setUp(() {
       my_list = [1, 2, 3];
@@ -116,7 +116,7 @@ void main() {
     });
   });
 
-  group('to manually compare values to determine sorting order ->', () {
+  group('to manually compare values to determine sorting order →', () {
     List<Map<String, Object>> apps;
     List<String> names;
     setUp(() {
@@ -144,7 +144,7 @@ void main() {
           <String>['Google Chrome', 'Safari', 'SourceTree', 'WordPress']);
     });
   });
-  group('shuffle ->', () {
+  group('shuffle →', () {
     List<int> my_list;
     setUp(() {
       my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -158,7 +158,7 @@ void main() {
     });
   });
 
-  group('indexOf ->', () {
+  group('indexOf →', () {
     List<int> my_list;
     setUp(() {
       my_list = [3, 6, 8, 7, 5, 1, 2, 4, 9];
@@ -176,7 +176,7 @@ void main() {
       expect(my_list.indexOf(91), -1);
     });
   });
-  group('lastIndexOf ->', () {
+  group('lastIndexOf →', () {
     List<int> my_list;
     setUp(() {
       my_list = [3, 6, 8, 7, 5, 1, 2, 4, 9];
@@ -195,7 +195,7 @@ void main() {
     });
   });
 
-  group('insert ->', () {
+  group('insert →', () {
     List<int> my_list;
     setUp(() {
       my_list = [3, 6, 8, 7, 5, 1, 2, 4, 9];
@@ -216,7 +216,7 @@ void main() {
     });
   });
 
-  group('insert a list of values into another list ->', () {
+  group('insert a list of values into another list →', () {
     List<int> my_list;
     setUp(() {
       my_list = [3, 6, 8, 7, 5, 1, 2, 4, 9];
@@ -230,7 +230,7 @@ void main() {
     });
   });
   group(
-      'replace values in a list with other values, and to do so at a specific position ->',
+      'replace values in a list with other values, and to do so at a specific position →',
       () {
     List<int> my_list;
     int length;
@@ -247,7 +247,7 @@ void main() {
     });
   });
 
-  group('delete a specific value from a list ->', () {
+  group('delete a specific value from a list →', () {
     List<int> my_list;
     int length;
     setUp(() {
@@ -260,7 +260,7 @@ void main() {
       expect(my_list[my_list.length - 1], 4);
     });
   });
-  group('remove an element at a given position ->', () {
+  group('remove an element at a given position →', () {
     List<int> my_list;
     int length;
     setUp(() {
@@ -273,7 +273,7 @@ void main() {
       expect(my_list[0], 6);
     });
   });
-  group('remove the last element of a list ->', () {
+  group('remove the last element of a list →', () {
     List<int> my_list;
     int length;
     setUp(() {
@@ -287,7 +287,7 @@ void main() {
     });
   });
 
-  group('remove specific elements of a list ->', () {
+  group('remove specific elements of a list →', () {
     List<int> my_list;
     int length;
     setUp(() {
@@ -301,7 +301,7 @@ void main() {
     });
   });
 
-  group('get elements that satisfy the defined condition ->', () {
+  group('get elements that satisfy the defined condition →', () {
     List<int> my_list;
     int length;
     setUp(() {
@@ -322,7 +322,7 @@ void main() {
     });
   });
 
-  group('keep a specific part of a list indicating the index range ->', () {
+  group('keep a specific part of a list indicating the index range →', () {
     List<int> my_list;
     setUp(() {
       my_list = [3, 6, 8, 7, 5, 1, 2, 4, 9];
@@ -334,7 +334,7 @@ void main() {
     });
   });
   group(
-      'return an iterable that lets you work with the elements indicated in the index from-to range ->',
+      'return an iterable that lets you work with the elements indicated in the index from-to range →',
       () {
     List<int> my_list;
     setUp(() {
@@ -346,7 +346,7 @@ void main() {
       expect(my_list, [6, 8, 7]);
     });
   });
-  group('copy iterable values in the from-to range ->', () {
+  group('copy iterable values in the from-to range →', () {
     List<int> my_list;
     int length;
     setUp(() {
@@ -368,7 +368,7 @@ void main() {
       expect(my_list, [8, 9, 6, 7, 5, 1, 2, 4, 9]);
     });
   });
-  group('set the values in the from-to range with the specified value ->', () {
+  group('set the values in the from-to range with the specified value →', () {
     List<int> my_list;
     int length;
     setUp(() {
@@ -383,7 +383,7 @@ void main() {
     });
   });
 
-  group('delete the elements in the from-to range ->', () {
+  group('delete the elements in the from-to range →', () {
     List<int> my_list;
 
     setUp(() {
@@ -397,7 +397,7 @@ void main() {
     });
   });
 
-  group('delete the values in the from-to range and insert the values ->', () {
+  group('delete the values in the from-to range and insert the values →', () {
     List<int> my_list;
     setUp(() {
       my_list = [3, 6, 8, 7, 5, 1, 2, 4, 9];
@@ -410,7 +410,7 @@ void main() {
     });
   });
 
-  group('convert a list into a dictionary ->', () {
+  group('convert a list into a dictionary →', () {
     List<int> my_list;
 
     setUp(() {
@@ -425,7 +425,7 @@ void main() {
     });
   });
 
-  group(' empty a list ->', () {
+  group(' empty a list →', () {
     List<int> my_list;
 
     setUp(() {
