@@ -48,6 +48,25 @@ class MySQLContacts extends Contacts {
     return c.future;
   }
 
+  /// Run INSERT multiple times
+  Future addAll(List<Map> list) {
+    final data = list.elementAt(0);
+    final c = Completer();
+    final fields = data.keys.join(',');
+    final q = data.keys.map((_) => '?').join(', ');
+
+    List<List<Object>> parameters;
+    parameters = [];
+    list.forEach((element) {
+      parameters.add(element.values.toList());
+    });
+
+    c.complete(_db.queryMulti(
+        'INSERT INTO $_tableName ($fields) VALUES ($q)', parameters));
+
+    return c.future;
+  }
+
   @override
   Future update(var id, Map data) {
     final c = Completer();
@@ -81,7 +100,7 @@ class MySQLContacts extends Contacts {
       element = {
         'fname': map[1],
         'lname': map[2],
-        'address': map[3],
+        'address': (map[3] as Blob).toString(),
         'zip': map[4],
         'city': map[5],
         'country': map[6]
@@ -92,10 +111,26 @@ class MySQLContacts extends Contacts {
   }
 
   @override
-  Future list() {}
+  Future list() async {
+    List<Map> results;
+    results = [];
+    var values = await _db.query('SELECT * FROM $_tableName');
 
-  @override
-  Future search(String query) {}
+    var it = values.iterator;
+    while (it.moveNext()) {
+      final map = it.current.asMap();
+      results.add({
+        'fname': map[1],
+        'lname': map[2],
+        'address': (map[3] as Blob).toString(),
+        /* TEXT is a Blob */
+        'zip': map[4],
+        'city': map[5],
+        'country': map[6]
+      });
+    }
+    return results;
+  }
 
   /// Deletes all the information on the `contacts` table.
   Future<bool> dropDB() {
@@ -104,4 +139,30 @@ class MySQLContacts extends Contacts {
 
   /// Closes DB connection.
   Future<dynamic> close() => _db.close();
+
+  @override
+  Future search(String query) async {
+    query = query.toLowerCase().trim();
+    var matches = [];
+    var where = """LOWER(fname) like '%$query%' OR 
+    LOWER(lname) like '%$query%' OR LOWER(address) like '%$query%' OR 
+    LOWER(zip) like '%$query%' OR LOWER(city) like '%$query%' OR 
+    LOWER(country) like '%$query%'""";
+
+    final results = await _db.query('SELECT * FROM $_tableName WHERE $where');
+
+    var it = results.iterator;
+    while (it.moveNext()) {
+      final map = it.current.asMap();
+      matches.add({
+        'fname': map[1],
+        'lname': map[2],
+        'address': (map[3] as Blob).toString(),
+        'zip': map[4],
+        'city': map[5],
+        'country': map[6]
+      });
+    }
+    return matches;
+  }
 }

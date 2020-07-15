@@ -1,5 +1,4 @@
 import 'package:chapter21_contacts/contacts.dart';
-import 'package:chapter21_contacts/src/mysql_connection.dart';
 import 'package:mysql1/mysql1.dart';
 
 import 'package:test/test.dart';

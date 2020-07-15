@@ -1,5 +1,4 @@
 import 'package:chapter21_contacts/contacts.dart';
-import 'package:chapter21_contacts/src/mysql_connection.dart';
 
 Future<void> main() async {
   MySQLContacts mysqlContacts;
